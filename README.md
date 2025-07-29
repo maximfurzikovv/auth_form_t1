@@ -1,69 +1,47 @@
-# React + TypeScript + Vite
+# Работа с формами и аутентификацией
+В рамках учебного задания реализовано приложение с клиент-серверной архитектурой на базе React + Redux Toolkit + TypeScript. Приложение включает CRUD-операции для пользователей, с формами для создания, редактирования и удаления пользователей.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Стек технологий:
+- React;
+- TypeScript;
+- Redux Toolkit;
+- React Router;
+- React Hook Form;
+- Material UI;
+- Vite;
+  
+### Backend: https://github.com/Pardeg/forms-server
 
-Currently, two official plugins are available:
+## Реализованный функционал:
+- REST API для управления пользователями.
+- Маршруты:
+  - Главная страница с таблицей пользователей ("/home").
+  - Страница создания пользователя ("/user/create").
+  - Страница редактирования пользователя("/user/edit/:id").
+  - Страница логина ("/login").
+- Форма создания пользователя:
+  - Автоматическое заполнение полного имени при вводе имени и фамилии.
+  - Валидация всех полей формы.
+  - Редирект на главную страницу после успешного создания пользователя.
+- Форма редактирования пользователя:
+  - Редактирование имени, фамилии, полного имени, телефона, занятости.
+  - Невозможность редактирования почты и пароля.
+- Таблица на главной странице:
+  - Отображает пользователей с обязательными столбцами: id, email.
+  - Возможность удаления пользователя через кнопку в таблице.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Инструкция по запуску проекта
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### Установка зависимостей
+```bash
+git clone https://github.com/maximfurzikovv/auth_form_t1.git
+npm install
+cd forms-server
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+#### Запуск
+```bash
+npm run start # В директрии forms-server
+npm run dev # В корнеовй директории
 ```
