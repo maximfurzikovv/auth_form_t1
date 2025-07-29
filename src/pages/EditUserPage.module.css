@@ -1,0 +1,14 @@
+.container {
+    max-width: 600px !important;
+    margin-top: 20px;
+}
+
+.textField {
+    margin-bottom: 20px !important;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px !important;
+}

@@ -1,0 +1,89 @@
+import { useForm } from 'react-hook-form';
+import { useAppDispatch, useAppSelector } from '../utils/hooks';
+import { login, selectUser } from '../features/auth/authSlice';
+import {
+  Box,
+  Button,
+  Container,
+  Paper,
+  TextField,
+  Typography,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+type LoginForm = {
+  email: string;
+  password: string;
+};
+
+export default function LoginPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>();
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const user = useAppSelector(selectUser);
+  const { loading, error } = useAppSelector((state) => state.auth);
+
+  const onSubmit = (data: LoginForm) => {
+    dispatch(login(data));
+  };
+
+  useEffect(() => {
+    if (user) {
+      navigate('/home');
+    }
+  }, [user, navigate]);
+
+  return (
+    <Container maxWidth="sm">
+      <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
+        <Typography variant="h5" gutterBottom>
+          Вход
+        </Typography>
+
+        {error && <Alert severity="error">{error}</Alert>}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            label="Email"
+            fullWidth
+            margin="normal"
+            {...register('email', { required: 'Email обязателен' })}
+            error={!!errors.email}
+            helperText={errors.email?.message}
+          />
+
+          <TextField
+            label="Пароль"
+            type="password"
+            fullWidth
+            margin="normal"
+            {...register('password', { required: 'Пароль обязателен' })}
+            error={!!errors.password}
+            helperText={errors.password?.message}
+          />
+
+          <Box mt={2}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              disabled={loading}
+              fullWidth
+              startIcon={loading ? <CircularProgress size={20} /> : null}
+            >
+              Войти
+            </Button>
+          </Box>
+        </form>
+      </Paper>
+    </Container>
+  );
+}

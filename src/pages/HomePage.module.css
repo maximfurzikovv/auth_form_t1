@@ -1,0 +1,18 @@
+.container {
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 1000px;
+  margin: 32px auto;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

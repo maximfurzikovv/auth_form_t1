@@ -1,0 +1,27 @@
+.pageWrapper {
+  max-width: 600px;
+  margin-top: 300px;
+
+}
+
+.formContainer {
+
+  width: 100%;
+}
+
+.paper {
+  padding: 32px;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.06);
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.input {
+  background-color: white;
+}
